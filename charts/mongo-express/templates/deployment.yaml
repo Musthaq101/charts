@@ -52,6 +52,10 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: mongo-express
+          volumeMounts:
+            - name: docdb-ca
+              mountPath: /ca
+              readOnly: true
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ include "common.images.image" ( dict "imageRoot" .Values.image "global" .Values.global ) }}
@@ -183,15 +187,24 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+
+      volumes:
+        - name: docdb-ca
+          secret:
+            secretName: {{ .Values.existingSecret }}
+            items:
+              - key: global-bundle.pem
+                path: global-bundle.pem
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with .Values.affinity }}
+      {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+      {{- end }}
+      {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- end }}
