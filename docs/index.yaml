@@ -8,7 +8,37 @@ entries:
       kubeVersion: '>=1.24'
     apiVersion: v2
     appVersion: 1.0.2
-    created: "2025-05-22T13:57:46.400675927+05:30"
+    created: "2025-08-08T14:32:36.15646+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami/
+      version: 2.19.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 15.1.5
+    description: Web-based MongoDB admin interface, written with Node.js and express
+    digest: 0f338dfa5cb436d5bfcd9a0c428f01f682e25a451910f1d510edb4964a49860a
+    home: https://github.com/mongo-express/mongo-express
+    icon: https://raw.githubusercontent.com/mongo-express/mongo-express/master/public/images/mongo-express-logo.png
+    maintainers:
+    - email: sebastien.prudhomme@gmail.com
+      name: sebastien-prudhomme
+    name: mongo-express
+    sources:
+    - https://github.com/mongo-express/mongo-express
+    - https://github.com/cowboysysop/charts/tree/master/charts/mongo-express
+    urls:
+    - https://musthaq101.github.io/charts/mongo-express-6.5.3.tgz
+    version: 6.5.3
+  - annotations:
+      artifacthub.io/signKey: |
+        fingerprint: 9E57D2479D48B84463EF491F66D280CE667AD6C8
+        url: https://cowboysysop.github.io/charts/pgp-public-key-2022-02-19.asc
+      kubeVersion: '>=1.24'
+    apiVersion: v2
+    appVersion: 1.0.2
+    created: "2025-08-08T14:32:36.152191+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami/
@@ -31,4 +61,4 @@ entries:
     urls:
     - https://musthaq101.github.io/charts/mongo-express-6.5.2.tgz
     version: 6.5.2
-generated: "2025-05-22T13:57:46.393385612+05:30"
+generated: "2025-08-08T14:32:36.147508+05:30"
